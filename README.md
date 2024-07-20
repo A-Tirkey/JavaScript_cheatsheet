@@ -1,2 +1,2 @@
-# JavaScript-ChaiAurCode
-A code repo for javascript series at Chai aur Code youtube channel
+# JavaScript_CheatSheet
+A Cheatsheet to quickly revise your JavaScript concepts
