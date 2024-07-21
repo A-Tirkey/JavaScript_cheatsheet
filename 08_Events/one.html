@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    ////++++ using onclick
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }
+
+     ////++++ using EventListner
+    // document.getElementById('images').addEventListener('click', function(){
+    //     alert("owl clicked again");
+    // })
+
+     // attachEvent()
+    // jQuery - on
+
+    // +++ event as an object 'e'  // you can see the object events in browser
+     // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log(e);
+    // },false)  // false =>default (event bubbling)
+
+    // type, timestamp, defaultPrevented(kisi bhi tag ka jo default behaviour hai usko rok sakte hai)
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+     
+     //// +++++Fales=> bubbling inside out
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation()
+    // }, false)
+
+     // output of above code
+    // 1) owl clicked
+    // 2) clicked inside the ul
+
+     //// +++++True=> capturing outer to inner
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, true)
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     
+    // }, true)
+
+    // output of above code
+    // 1) clicked inside the ul
+    // 2) owl clicked
+
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation() // event bubbee hoke upar ke element pe nahi jayega (sirf "owl clicked" print hoga and not "clicked inside the ul") 
+    // }, false)
+
+     // output of above code
+    // 1) owl clicked
+    
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();  // google websit epe nahi jayega
+    //     e.stopPropagation()  
+    //     console.log("google clicked");
+    // }, false)
+   
+    // when want an image to be removed when we click on it
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName);
+        if (e.target.tagName === 'IMG') { // ye nahi karenge to image ke alawa jo list  hai vo bhi click krne pr delete ho jayega
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+    
+        
+    },false)
+    
+    //removeIt.parentNode.removeChild(removeIt)
+</script>
+</html>
